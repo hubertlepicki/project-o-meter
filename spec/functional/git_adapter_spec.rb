@@ -30,6 +30,13 @@ describe SCM::GitAdapter do "generating statistics"
     @repo.removed_lines_count(Time.parse("2010-08-14 14:00:44"), Time.parse("2010-08-14 15:00:0")).should eql(4)
   end
 
+  it "should give number of total lines changed globally" do
+    @repo.changed_lines_count.should eql(15)
+  end
+  
+  it "should give number of total lines changed between two dates" do
+    @repo.changed_lines_count(Time.parse("2010-08-14 14:00:44"), Time.parse("2010-08-14 15:00:0")).should eql(5)
+  end
 end
 
 describe SCM::GitAdapter, "cloning repositiories" do
@@ -46,6 +53,4 @@ describe SCM::GitAdapter, "cloning repositiories" do
     SCM::GitAdapter.clone_repository "git://github.com/hubertlepicki/project-o-meter-test-repo1.git", "spec/tmp/project-o-meter"
     File.should exist("spec/tmp/project-o-meter/1.txt")
   end
-
-
 end
