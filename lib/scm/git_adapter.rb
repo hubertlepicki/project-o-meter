@@ -29,6 +29,11 @@ module SCM
         @repo.commits.select {|c| c.date > from_time && c.date <= to_time}.map {|c| c.stats.deletions }.inject("+")
       end
     end
-
+    
+    def self.clone_repository(url, directory)
+      `git clone #{url} #{directory}`
+      SCM::GitAdapter.new directory
+    end
   end
 end
+
