@@ -1,3 +1,7 @@
 Gemfile.lock
 .bundle/*
 spec/tmp/*
+*.swp
+*/*.swp
+*/*/*.swp
+*/*/*/*.swp
