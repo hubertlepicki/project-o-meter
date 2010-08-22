@@ -7,16 +7,16 @@ describe "Project o Meter initialization" do
 
   it "should initalize project name from yaml file" do
     AmberBitAppConfig.should_receive(:initialize).with("/some/path.yml", "").and_return(@config)
-    @project = ProjectOMeter.new("/some/path.yml")
+    @project = ProjectOMeter.instance("/some/path.yml")
   end
 
   it "should check out project repository on setup" do
-    @project = ProjectOMeter.new("/some/path.yml")
+    @project = ProjectOMeter.instance("/some/path.yml")
     File.exist?("/tmp/repo").should be_true
   end
 
   it "should have accessible project repo object on setup" do
-    @project = ProjectOMeter.new("/some/path.yml")
+    @project = ProjectOMeter.instance("/some/path.yml")
     @project.repository.should be_instance_of(SCM::GitAdapter) 
   end
 end
@@ -32,7 +32,7 @@ describe "Project o Meter collecting metrics" do
  end
 
   it "it should collect all metrics needed" do
-    @project = ProjectOMeter.new("/some/path.yml")
+    @project = ProjectOMeter.instance("/some/path.yml")
 
     FooMetric.should_receive(:collect_data).with([Time.parse("2010-01-01 00:00:00"), Time.parse("2010-02-02 00:00:00"), Time.parse("2010-02-03 00:00:00")])
     BarMetric.should_receive(:collect_data).with([Time.parse("2010-01-01 00:00:00"), Time.parse("2010-02-02 00:00:00")])

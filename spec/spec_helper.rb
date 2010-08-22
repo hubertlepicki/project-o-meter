@@ -12,6 +12,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Mongoid.database.collections.each {|col| begin col.drop; rescue; end }
+    ProjectOMeter.clear
   end
 
   #config.after(:each) do
