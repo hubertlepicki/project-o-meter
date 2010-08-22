@@ -23,3 +23,12 @@ def prepare_repo
   `git clone git://github.com/hubertlepicki/project-o-meter-test-repo1.git ../project-o-meter-test-repo1`
 end
 
+def example_config_for_project
+    `rm -rf /tmp/repo`
+    @config = OpenStruct.new
+    @config.repository_url = "http://github.com/hubertlepicki/project-o-meter-test-repo1.git"
+    @config.repository_type = "git"
+    @config.repository_clone_path = "/tmp/repo"
+    AmberBitAppConfig.stub!(:initialize).with("/some/path.yml", "").and_return(@config)
+end
+
