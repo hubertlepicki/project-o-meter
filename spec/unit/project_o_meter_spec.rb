@@ -34,10 +34,9 @@ describe "Project o Meter collecting metrics" do
   it "it should collect all metrics needed" do
     @project = ProjectOMeter.instance("/some/path.yml")
 
-    FooMetric.should_receive(:collect_data).with([Time.parse("2010-01-01 00:00:00"), Time.parse("2010-02-02 00:00:00"), Time.parse("2010-02-03 00:00:00")])
-    BarMetric.should_receive(:collect_data).with([Time.parse("2010-01-01 00:00:00"), Time.parse("2010-02-02 00:00:00")])
+    FooMetric.should_receive(:collect_data).with([Time.parse("2010-01-01 00:00:00"), Time.parse("2010-02-02 00:00:00"), Time.parse("2010-02-03 00:00:00")], @project)
+    BarMetric.should_receive(:collect_data).with([Time.parse("2010-01-01 00:00:00"), Time.parse("2010-02-02 00:00:00")], @project)
     @project.collect_metrics
-
   end
 
 

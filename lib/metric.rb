@@ -1,6 +1,7 @@
 module Metric
   def self.included(base)
     base.send :include, Mongoid::Document
+    base.send :attr_accessor, :project
     base.send :field, :value, type: Float
     base.send :field, :from, type: Time
     base.send :field, :to, type: Time
@@ -16,10 +17,10 @@ module Metric
   end
 
  module ClassMethods
-   def collect_data(time_periods)
+   def collect_data(time_periods, project)
      Metric.collect_pairs(time_periods).each do |period|
        unless first(conditions: {from: period[0], to: period[1]})
-         create from: period[1], to: period[1]
+         create from: period[0], to: period[1], project: project
        end
      end
    end

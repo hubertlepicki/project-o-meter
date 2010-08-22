@@ -34,7 +34,7 @@ describe Metric do
   it "should collect values" do
     MyMetric.collect_data([ Time.parse("2001-01-01 00:00:00"), 
                             Time.parse("2001-01-15 00:00:00"),
-                            Time.parse("2001-01-30 00:00:00") ])
+                            Time.parse("2001-01-30 00:00:00") ], "Some project")
 
     MyMetric.count.should eql(2)
     MyMetric.first.value.should eql(10.0)
