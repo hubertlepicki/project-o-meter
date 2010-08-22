@@ -23,6 +23,3 @@ def prepare_repo
   `git clone git://github.com/hubertlepicki/project-o-meter-test-repo1.git ../project-o-meter-test-repo1`
 end
 
-def create_test_project
-  Project.create name: "test_project", scm: "git", repository_url: "git://github.com/hubertlepicki/project-o-meter-test-repo1.git"
-end
