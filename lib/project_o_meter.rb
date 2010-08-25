@@ -10,8 +10,13 @@ require File.join(File.dirname(__FILE__), 'loc_plus_metric')
 require File.join(File.dirname(__FILE__), 'loc_minus_metric')
 require File.join(File.dirname(__FILE__), 'loc_changed_metric')
 require File.join(File.dirname(__FILE__), 'loc_metric')
+require File.join(File.dirname(__FILE__), 'test_loc_plus_metric')
+require File.join(File.dirname(__FILE__), 'test_loc_minus_metric')
+require File.join(File.dirname(__FILE__), 'test_loc_metric')
+require File.join(File.dirname(__FILE__), 'test_code_ratio_metric')
+require File.join(File.dirname(__FILE__), 'hours_per_story_point_metric')
+require File.join(File.dirname(__FILE__), 'story_points_delivered_daily_metric')
 require File.join(File.dirname(__FILE__), 'scm/git_adapter')
-
 # This class is a Multiton
 class ProjectOMeter
   attr_accessor :repository
