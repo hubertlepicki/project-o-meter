@@ -4,12 +4,13 @@ Bundler.require
 
 AmberBitAppConfig.initialize File.join(File.dirname(__FILE__), "..", "config.yml"), ""
 
-require 'metric'
-require 'commits_count_metric'
-require 'loc_plus_metric'
-require 'loc_minus_metric'
-require 'loc_metric'
-require 'scm/git_adapter'
+require File.join(File.dirname(__FILE__), 'metric')
+require File.join(File.dirname(__FILE__), 'commits_count_metric')
+require File.join(File.dirname(__FILE__), 'loc_plus_metric')
+require File.join(File.dirname(__FILE__), 'loc_minus_metric')
+require File.join(File.dirname(__FILE__), 'loc_changed_metric')
+require File.join(File.dirname(__FILE__), 'loc_metric')
+require File.join(File.dirname(__FILE__), 'scm/git_adapter')
 
 # This class is a Multiton
 class ProjectOMeter

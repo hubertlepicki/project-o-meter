@@ -20,7 +20,8 @@ module Metric
    def collect_data(time_periods, project)
      Metric.collect_pairs(time_periods).each do |period|
        unless first(conditions: {from: period[0], to: period[1]})
-         create from: period[0], to: period[1], project: project
+         puts "Collecting data: #{self.to_s} #{period[0]} #{period[1]}"
+         puts create(from: period[0], to: period[1], project: project).value
        end
      end
    end
